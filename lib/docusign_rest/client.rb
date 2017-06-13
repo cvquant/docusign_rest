@@ -8,6 +8,8 @@ module DocusignRest
     attr_accessor *Configuration::VALID_CONFIG_KEYS
     attr_accessor :docusign_authentication_headers, :acct_id
     attr_accessor :previous_call_log
+    attr_accessor :previous_request
+    attr_accessor :previous_response
 
     def initialize(options={})
       # Merge the config values from the module and those passed to the client.
@@ -1672,6 +1674,8 @@ module DocusignRest
     # Private: Generates a standardized log of the request and response pair
     # to and from DocuSign for logging and API Certification.
     # and resulting list is set to the publicly accessible: @previous_call_log
+    # It also makes the request and response publicly accessible at @previous_request
+    # and @previous_response
     # For example:
     # envelope = connection.create_envelope_from_document(doc)
     # connection.previous_call_log.each {|line| logger.debug line }
@@ -1689,6 +1693,8 @@ module DocusignRest
       response.each_capitalized{ |k,v| log << "#{k}: #{v}" }
       log << "Body: #{response.body}"
       @previous_call_log = log
+      @previous_request = request
+      @previous_response = response
     end
   end
 end
