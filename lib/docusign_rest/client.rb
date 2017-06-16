@@ -241,6 +241,9 @@ module DocusignRest
         if signer[:email_notification]
           template_role[:emailNotification] = signer[:email_notification]
         end
+        if signer[:requireIdLookup]
+          template_role[:requireIdLookup] = signer[:requireIdLookup]
+        end
 
         template_role['clientUserId'] = (signer[:client_id] || signer[:email]).to_s if signer[:embedded] == true
         template_roles << template_role
