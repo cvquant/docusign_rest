@@ -234,7 +234,8 @@ module DocusignRest
             checkboxTabs: get_signer_tabs(signer[:checkbox_tabs]),
             numberTabs:   get_signer_tabs(signer[:number_tabs]),
             fullNameTabs: get_signer_tabs(signer[:fullname_tabs]),
-            dateTabs:     get_signer_tabs(signer[:date_tabs])
+            dateTabs:     get_signer_tabs(signer[:date_tabs]),            
+            ssnTabs:     get_signer_tabs(signer[:ssn_tabs])
           }
         }
 
